@@ -138,8 +138,8 @@ general = "General..."
 general_name_entry = "Name"
 
 [types]
-part = "G4B_Component"                     # CONFIRM: default part type (prepare_create_item picks the real one)
-part_types = ["G4B_Component", "G4B_Capacitor", "G4B_Resistor", "G4B_Assembly", "G4B_PCBA", "Item"]
+part = "G4B_Part"
+part_types = ["G4B_Part", "G4B_Capacitor", "Item"]
 document = "G4B_Document"                  # CONFIRM
 mpn = "G4B_MfgPart"
 mpn_types = ["G4B_MfgPart"]
@@ -149,7 +149,7 @@ product_line = "G4B_ProductLine"
 mfg_test_types = ["G4B_MfgTestRevision"]   # CONFIRM
 
 [change_types]
-eco = "G4B_ChangeOrder"
+eco = "G4B_ECO"
 mco = "G4B_MfgChangeOrder"                 # CONFIRM
 dev = "G4B_DevReq"
 prq = "G4B_PostRampQual"
@@ -247,7 +247,7 @@ Requestor = "fnd0Requestor"
 Analyst = "fnd0ChangeAnalyst"
 
 [create.eco]                               # zNext: ECO id is the name; title also saved as description
-type = "G4B_ChangeOrder"
+type = "G4B_ECO"
 values_on = "revision"                     # CONFIRM: fields that the type does not declare go on the first revision
 name_from = "_generated_id"
 
