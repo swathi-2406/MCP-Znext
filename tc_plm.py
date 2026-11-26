@@ -138,24 +138,24 @@ general = "General..."
 general_name_entry = "Name"
 
 [types]
-part = "G4B_Part"
-part_types = ["G4B_Part", "G4B_Capacitor", "Item"]
-document = "G4B_Document"                  # CONFIRM
-mpn = "G4B_MfgPart"
-mpn_types = ["G4B_MfgPart"]
-manufacturer = "G4B_Manufacturer"
-plant = "G4B_MfgPlantCode"
-product_line = "G4B_ProductLine"
-mfg_test_types = ["G4B_MfgTestRevision"]   # CONFIRM
+part = "G4b_Part"                          # display name "Capacitor"
+part_types = ["G4b_Part", "Item"]
+document = ""                              # no G4b document type on this server
+mpn = "G4b_MfgPart"
+mpn_types = ["G4b_MfgPart"]
+manufacturer = "G4b_Manufacturer"
+plant = ""                                 # no G4b plant type on this server
+product_line = "G4b_ProductLine"
+mfg_test_types = []                        # no G4b Mfg-test type on this server
 
 [change_types]
-eco = "G4B_ECO"
-mco = "G4B_MfgChangeOrder"                 # CONFIRM
-dev = "G4B_DevReq"
-prq = "G4B_PostRampQual"
-pnr = "G4B_PNR"
-cr = "G4B_CR"
-mcr = "G4B_MCR"                            # CONFIRM
+eco = "G4b_ECO"
+mco = ""                                   # not on this server
+dev = ""                                   # not on this server
+prq = "G4b_PostRampQual"
+pnr = "G4b_PNR"
+cr = "G4b_CR"
+mcr = ""                                   # not on this server
 
 [change_prefixes]
 "ECO-" = "eco"
@@ -190,8 +190,8 @@ custom_value = "Custom"
 off_shelf_value = "Off-the-Shelf"
 
 [relations]
-aml = "G4B_GPN_MPNRelation"
-vendor_docs = "G4B_MPN_VendorDocRelation"
+aml = "G4b_GPN_MPNRelation"
+vendor_docs = "G4b_MPN_VendorDocRelation"
 attachments = ["IMAN_specification", "IMAN_reference", "IMAN_Rendering", "TC_Attaches", "IMAN_manifestation"]
 attach_default = "IMAN_specification"
 plants = "LocationInCompany"
@@ -202,7 +202,7 @@ reference = "CMReferences"
 participants = "HasParticipant"
 aml_secondary = "item"                   # MPN side of the AML relation: "item" or "revision"
 
-[aml_fields]                               # CONFIRM property names on G4B_GPN_MPNRelation
+[aml_fields]                               # CONFIRM property names on G4b_GPN_MPNRelation
 preferred_status = "g4b_preferred_status"
 qual_status = "g4b_qual_status"
 allocation = "g4b_allocation"
@@ -247,7 +247,7 @@ Requestor = "fnd0Requestor"
 Analyst = "fnd0ChangeAnalyst"
 
 [create.eco]                               # zNext: ECO id is the name; title also saved as description
-type = "G4B_ECO"
+type = "G4b_ECO"
 values_on = "revision"                     # CONFIRM: fields that the type does not declare go on the first revision
 name_from = "_generated_id"
 
@@ -262,7 +262,7 @@ build_impacted = "g4b_build_impacted"
 functional_teams = "g4b_functional_teams"
 
 [create.cr]
-type = "G4B_CR"
+type = "G4b_CR"
 values_on = "revision"                     # CONFIRM: fields that the type does not declare go on the first revision
 name_from = "_generated_id"
 
@@ -276,7 +276,7 @@ product_lines = "g4b_product_lines"
 functional_team = "g4b_functional_team"
 
 [create.pnr]
-type = "G4B_PNR"
+type = "G4b_PNR"
 values_on = "revision"                     # CONFIRM: fields that the type does not declare go on the first revision
 name_from = "title"
 
@@ -288,7 +288,7 @@ copy_from_existing_part = "g4b_copy_from_part"
 comments = "g4b_comments"
 
 [create.prq]
-type = "G4B_PostRampQual"
+type = "G4b_PostRampQual"
 values_on = "revision"                     # CONFIRM: fields that the type does not declare go on the first revision
 name_from = "_generated_id"
 
@@ -300,7 +300,7 @@ prq_type = "g4b_prq_type"
 description_of_change = "g4b_desc_of_change"
 
 [create.manufacturer]
-type = "G4B_Manufacturer"
+type = "G4b_Manufacturer"
 name_from = "name"
 
 [create.manufacturer.map]
@@ -309,7 +309,7 @@ description = "object_desc"
 parent_company = "g4b_parent_company"
 
 [create.product_line]
-type = "G4B_ProductLine"
+type = "G4b_ProductLine"
 name_from = "name"
 product_code_max = 6
 
@@ -325,7 +325,7 @@ NPI = ["Proto", "EVT", "DVT", "PVT", "MP"]
 Sustaining = ["N/A"]
 
 [create.mpn]
-type = "G4B_MfgPart"
+type = "G4b_MfgPart"
 name_from = "mpn_id"
 
 [create.mpn.map]
@@ -343,10 +343,10 @@ no_value = "SOA_EPM_false"
 comment_tag = "[via zNext MCP]"
 
 [participants]                             # CONFIRM against znext_model.yaml
-eco = { Analyst = "ChangeSpecialist1", Approver = "G4B_ECOApprover" }
-cr = { Analyst = "Analyst", Approver = "G4B_ECOApprover" }
-dev = { Approver = "G4B_ECOApprover" }
-prq = { Owner = "G4B_PRQOwner", DRI = "G4B_PRQDRI", "OK2 Approver" = "G4B_OK2Approver" }
+eco = { Analyst = "ChangeSpecialist1", Approver = "G4b_ECOApprover" }
+cr = { Analyst = "Analyst", Approver = "G4b_ECOApprover" }
+dev = { Approver = "G4b_ECOApprover" }
+prq = { Owner = "G4b_PRQOwner", DRI = "G4b_PRQDRI", "OK2 Approver" = "G4b_OK2Approver" }
 pnr = { Requestor = "Requestor" }
 
 [rules]
@@ -1568,7 +1568,7 @@ def search_znext(query: str, object_types: list[str] | None = None, page: int = 
     prefix, id, name, description or keywords, with wildcards (e.g. 'G650-0143*', 'ECO-A66*', 'DAUGHTER BOARD').
     GPNs / prefixes use a live query (finds objects created seconds ago); other text uses the full-text index
     (with type_facets), with a live fallback when the index has no hit. Each result says source: live | index.
-    object_types: optional type filter, e.g. ['G4B_ChangeOrderRevision']. Max 25 per page."""
+    object_types: optional type filter, e.g. ['G4b_ECORevision']. Max 25 per page."""
     c = ctx()
     page_size = max(1, min(page_size, 25))
     q = query.strip()
@@ -1975,8 +1975,8 @@ def get_object(object_id: str, object_type: str = "", page: str = "Overview", in
     """Any object's page (default Overview), labeled like Active Workspace, plus its other tabs and a link.
     By id: GPN, document, MPN (+ GPNs using it, vendor documents), PNR / PRQ / CR / ECO (+ impacted / solution /
     problem items, participants, workflow summary). By name: manufacturer (+ plants; include_parts=true lists its
-    parts, slow), plant (+ manufacturer), product line. object_type narrows a lookup (e.g. 'G4B_Manufacturer',
-    'G4B_MfgPlantCode', 'G4B_ProductLine', or 'G4B_MfgPart' for an MPN whose id equals a GPN).
+    parts, slow), plant (+ manufacturer), product line. object_type narrows a lookup (e.g. 'G4b_Manufacturer',
+    'G4b_ProductLine', or 'G4b_MfgPart' for an MPN whose id equals a GPN).
     Empty fields are hidden unless include_empty."""
     c = ctx()
     t = c.cfg["types"]
